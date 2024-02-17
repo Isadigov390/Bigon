@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery@3.7.1",
+      "destination": "wwwroot/libs/jquery/"
+    },
+    {
+      "library": "ckeditor5@41.0.0",
+      "destination": "wwwroot/libs/ckeditor5/"
+    },
+    {
+      "library": "sweetalert2@11.10.5",
+      "destination": "wwwroot/libs/sweetalert2/"
+    },
+    {
+      "library": "select2@4.0.13",
+      "destination": "wwwroot/libs/select2/"
+    },
+    {
+      "library": "jquery-treegrid@0.2.0",
+      "destination": "wwwroot/libs/jquery-treegrid/"
+    }
+  ]
+}

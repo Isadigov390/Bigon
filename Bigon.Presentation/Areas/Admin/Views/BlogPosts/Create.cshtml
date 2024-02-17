@@ -1,0 +1,112 @@
+﻿@using Bigon.Application.Modules.BlogPostModule.Commands.BlogPostAddCommand
+@model BlogAddRequest
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Basic Form Inputs</h4>
+                    <span>
+                        Lorem ipsum dolor sit <code>amet</code>, consectetur
+                        adipisicing elit
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="../index.html"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Form Components</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Form Components</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Basic Form Inputs card start -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>Basic Form Inputs</h5>
+                    <span>
+                        Add class of <code>.form-control</code> with
+                        <code>&lt;input&gt;</code> tag
+                    </span>
+
+
+                    <div class="card-header-right">
+                        <i class="icofont icofont-spinner-alt-5"></i>
+                    </div>
+
+                </div>
+                <div class="card-block">
+                    <h4 class="sub-title">Basic Inputs</h4>
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" asp-for="Title"></label>
+
+                                <input type="text" class="form-control" asp-for="Title">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" asp-for="CategoryId"></label>
+                            <select class="form-control" asp-for="CategoryId">
+                                <option value="" selected disabled >--- Choose ---</option>
+                                <option value="1">Category-1</option>
+                                <option value="2">Category-2</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" asp-for="Body"></label>
+                            <textarea class="form-control" asp-for="Body" id="body-editor"></textarea>
+
+                        </div>
+                        <div class="form-group row">
+                            <label class="file-choose empty"  for="cover-image"></label>
+                            <input asp-for="Image" id="cover-image" type="file" accept="image/png, image/gif, image/jpeg" />
+                        </div>
+                        <div class="form-group row">
+                            <a class="btn btn-sm btn-primary" asp-action="Index">GoBack</a>
+                            <button class="btn btn-sm btn-success">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section addcss{
+    <link  rel="stylesheet" href="~/libs/single-image-chooser/single-image-chooser.css"/>
+}
+@section addjs{
+    <script src="~/libs/ckeditor5/ckeditor.min.js"></script>
+    <script src="~/libs/single-image-chooser/single-image-chooser.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#cover-image').singleImageChooser();
+
+            ClassicEditor
+                 .create(document.querySelector('#body-editor'))
+                .then(editor => { })
+                .catch(error => { console.error(error); })
+        });
+
+        
+    </script>       
+}
+
+

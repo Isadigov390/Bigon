@@ -1,0 +1,99 @@
+﻿@using Bigon.Application.Modules.CategoriesModule.Commands.CategoryAddCommand;
+@using Bigon.Domain.Models.Stables
+    @model CategoryAddRequest
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Basic Form Inputs</h4>
+                    <span>
+                        Lorem ipsum dolor sit <code>amet</code>, consectetur
+                        adipisicing elit
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="../index.html"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Form Components</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Form Components</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Basic Form Inputs card start -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>Basic Form Inputs</h5>
+                    <span>
+                        Add class of <code>.form-control</code> with
+                        <code>&lt;input&gt;</code> tag
+                    </span>
+
+
+                    <div class="card-header-right">
+                        <i class="icofont icofont-spinner-alt-5"></i>
+                    </div>
+
+                </div>
+                <div class="card-block">
+                    <h4 class="sub-title">Basic Inputs</h4>
+                    <form method="post">
+                        <div class="form-group">
+                            <label class="control-label" asp-for="Name"></label>
+                            <input type="text" class="form-control" asp-for="Name">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" asp-for="Type"></label>
+                             <select class="form-control" asp-for="Type" asp-items="@Html.GetEnumSelectList<CategoryType>()"></select>
+                        </div >
+                        <div class="form-group">
+                            <label class="control-label" asp-for="ParentId"></label>
+                            <select class="form-control select2" asp-for="ParentId" asp-items="@ViewBag.ParentId">
+                                 <option selected >---- Choose ---</option>
+                             </select>
+                        </div >
+                        <div class="form-group text-right m=0">
+                            <a class="btn btn-sm btn-primary" asp-action="index">Cancel</a>
+                            <button class="btn btn-sm btn-success">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section addcss{
+    <link href="~/libs/select2/css/select2.min.css" rel="stylesheet" />
+
+
+
+}
+
+
+@section addjs{
+    <script src="~/libs/select2/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2();
+        });
+    </script>
+}

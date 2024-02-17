@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewData["Title"] = "Contact";
+}
+
+       <!-- Breadcrumb Start -->
+        <div class="breadcrumb-area ptb-50">
+            <div class="container">
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active"><a  asp-controller="home" asp-action="contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Container End -->
+        </div>
+        <!-- Breadcrumb End -->
+        <!-- Google Map Start -->
+        <div class="container">
+            <div id="map" style="height:400px">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d32557543.033047896!2d-52.0331925!3d5.0534957!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91e8605342744385%3A0x3d3c6dc1394a7fc7!2sAmazon%20Rainforest!5e0!3m2!1sen!2sbd!4v1636533626678!5m2!1sen!2sbd"
+                    style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+            </div>
+        </div>
+        <!-- Google Map End -->
+        <!-- Contact Email Area Start -->
+        <div class="contact-email-area ptb-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="mb-5">Contact Us</h3>
+                        <p class="text-capitalize mb-40">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+
+                <form  class="contact-form" id="contactForm" 
+                    method="post">
+                    <div class="address-wrapper row">
+                        <div class="col-md-12">
+                            <div class="address-fname">
+                                <input type="text" name="FullName" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="address-email">
+                                <input type="email" name="email" placeholder="Email">
+                            </div>
+                        </div>
+                       
+                        <div class="col-12">
+                            <div class="address-subject">
+                                <input type="text" name="subject" placeholder="Subject">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="address-textarea">
+                                <textarea name="message" placeholder="Write your message"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="form-message ml-15"></p>
+                    <div class="col-12 footer-content mail-content">
+                        <div class="send-email pull-right">
+                            <input type="submit" value="Submit" class="submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Contact Email Area End -->
+        <!-- Signup Newsletter Start -->
+@section addjs {
+    <script>
+        $(document).ready(function () {
+            $('#contactForm').submit(function (e) {
+                $(e.currentTarget).find('input[type=submit]').hide();
+                e.preventDefault();
+
+                let formData = new FormData(e.currentTarget);
+
+                $.ajax({
+                    url: '@Url.Action("Contact")',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        alert('oldu sag ol ');
+                        e.currentTarget.reset();
+                    },
+                    error: function (errResponse) {
+                        console.log(errResponse);
+                    }
+                }).always(function () {
+                    $(e.currentTarget).find('input[type=submit]').show();
+                })
+            });
+        });
+    </script>
+}
